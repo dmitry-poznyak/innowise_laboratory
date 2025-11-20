@@ -1,55 +1,49 @@
-name = input("Привет! Введите ваше полное имя:")
-birth_year = int(input("Введите год рождения:"))
-year_now = 2025
-
-age = year_now - birth_year
-
-#print(name, age)
-
-def func_life_stage (age):
+def generate_profile (age: int):
     if age > 0 and age <= 12:
-        return "Ребенок"
-    elif age <= 13 and age >=19:
-        return "Подросток"
+        return "Child"
+    elif age >= 13 and age <=19:
+        return "Teenager"
     elif age >= 20:
-        return "Взрослый"
+        return "Adult"
     else:
-        return "error age"
-
-life_stage = func_life_stage(age)
-#print(f"Вы: {life_stage}\n")
+        return "Invalid age"
 
 
+user_name = input("Enter your full name: ")
+birth_year_str = int(input("Enter your birth year: "))
+
+current_year = 2025
+current_age = current_year - birth_year_str
 
 hobbies = []
 
-print("Введите ваши хобби! Напишите «stop», чтобы закончить..")
 
 while True:
-    hobby = input("Введите хоби: ")
+    hobby = input("Enter a favorite hobby or type 'stop' to finish: ")
     if hobby.lower() == "stop":
         break
+
     hobbies.append(hobby)
 
-#print(hobbies)
 
-profile = {
-    "name": name,
-    "birth_year": birth_year,
-    "age": age,
+life_stage = generate_profile(current_age)
+
+user_profile = {
+    "name": user_name,
+    "age": current_age,
     "life_stage": life_stage,
     "hobbies": hobbies
 }
 
-print("\nПрофиль пользователя")
-print(f"Имя: {profile['name']}")
-print(f"Возраст: {profile['age']}")
-print(f"Жизненный этап: {profile['life_stage']}")
-print(f"Хобби: {profile['hobbies']}")
+print("\nProfile summary")
+print(f"Name: {user_profile['name']}")
+print(f"Current Age: {user_profile['age']}")
+print(f"Life Stage: {user_profile['life_stage']}")
+
 
 if not hobbies:
-    print("\nВы не указали ни одного хобби.")
+    print("You didn't mention any hobbies.")
 else:
-    print(f"\nВы ввели {len(hobbies)} хобби:")
+    print(f"Favorite Hobbies {len(hobbies)}:")
     for i in hobbies:
         print(f"- {i}")
