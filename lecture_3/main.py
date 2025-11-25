@@ -84,3 +84,30 @@ while True:
             print("Overall average:", sum(averages)/len(averages))
         else:
             print("No grades added yet.")
+
+
+    #OPTION 4
+    elif choice == "4":
+        top_student = None
+        top_avg = -1
+
+        for s in students:
+            if s["grades"]:
+                avg = sum(s["grades"]) / len(s["grades"])
+                if avg > top_avg:
+                    top_avg = avg
+                    top_student = s
+
+        if top_student is None:
+            print("No students with grades.")
+        else:
+            print(f"Top performer: {top_student['name']} ({top_avg:.2f})")
+
+
+    #OPTION 5
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice.")
