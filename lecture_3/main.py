@@ -59,3 +59,28 @@ while True:
                         print("Grade must be 0–100.")
                 except:
                     print("Invalid grade.")
+
+
+    #OPTION 3
+    elif choice == "3":
+        if not students:
+            print("No students yet.")
+            continue
+
+        print("\n--- REPORT ---")
+        averages = []
+
+        for s in students:
+            if len(s["grades"]) == 0:
+                print(f"{s['name']} — average: N/A")
+            else:
+                avg = sum(s["grades"]) / len(s["grades"])
+                averages.append(avg)
+                print(f"{s['name']} — average: {avg:.2f}")
+
+        if averages:
+            print("\nMax average:", max(averages))
+            print("Min average:", min(averages))
+            print("Overall average:", sum(averages)/len(averages))
+        else:
+            print("No grades added yet.")
