@@ -1,4 +1,4 @@
-students = []
+students = []   # список студентов
 
 while True:
     print("\n--- Student Grade Analyzer ---")
@@ -9,3 +9,53 @@ while True:
     print("5. Exit")
 
     choice = input("Enter choice (1-5): ")
+
+    #OPTION 1
+    if choice == "1":
+        name = input("Enter student name: ")
+
+        # проверяем, есть ли студент
+        exists = False
+        for s in students:
+            if s["name"].lower() == name.lower():
+                exists = True
+                break
+
+        if exists:
+            print("Such student already exists.")
+        else:
+            students.append({"name": name, "grades": []})
+            print("Student added.")
+
+
+    #OPTION 2
+    elif choice == "2":
+        name = input("Enter student name: ")
+
+        # ищем студента
+        found = None
+        for s in students:
+            if s["name"].lower() == name.lower():
+                found = s
+                break
+
+        if found is None:
+            print("Student not found.")
+        else:
+            print("Enter grades (0–100). Type 'done' to finish.")
+
+            while True:
+                g = input("Grade: ")
+
+                if g.lower() == "done":
+                    break
+
+                try:
+                    grade = int(g)
+                    if 0 <= grade <= 100:
+                        found["grades"].append(grade)
+                        print("Grade added.")
+                    else:
+                        print("Grade must be 0–100.")
+                except:
+                    print("Invalid grade.")
